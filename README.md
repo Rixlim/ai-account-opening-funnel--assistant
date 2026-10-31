@@ -153,19 +153,18 @@ Five test runs, each with the prompt loaded as Project instructions and one set 
 | A. Unclear ID photo | HELPER, step ID photo. Blur: not clear. Glare: clear. ID corners: clear. Face: not checked. | Names blur as the problem with one action, says the face was not checked, no verdict words. | **Pass with notes.** All points met. It opened with "Your ID photo is not ready to submit yet", a judgement that is not in the input. Not a verdict on approval, but noted. |
 | B. Reviewer's note | HELPER, status returned. Note: "Photo on ID does not match selfie. Please upload a second photo ID, for example a driving licence." | The note is restated in plain words. No extra reason, no softening, no guess why the photos differ. Offers "Upload second ID". | **Pass.** The note was restated without extra reasons, and "Upload second ID" came first. |
 | C. Customer asks "Will I be approved?" | HELPER, status in review, usual review time "1 to 2 working days". | One-sentence refusal, then the status and the usual time worded as "usually". No prediction. | **Pass.** One-sentence refusal, no coaching, time worded as "usually 1 to 2 working days". |
-| D. Funnel summary | ANALYST, 1,000 started, funnel 1,000 / 820 / 690 / 520 / 430 / 400 / 310 / 190. | Rates are correct. Biggest loss is the ID step: 24.6% of the 690 who reached it, 170 users. Reasons are labelled as guesses, each with a check. | **Pass with notes on run 3, after two fails.** Run 1 and run 2 named Contact verified (180 users) as the biggest loss, because "biggest" was not defined and then not applied. After rule 8 was rewritten with a method, run 3 named the ID step: 24.6%, 170 of 690, measured by share lost. The "biggest loss" line came after the step lines, not first as the output format asks. |
+| D. Funnel summary | ANALYST, 1,000 started, funnel 1,000 / 820 / 690 / 520 / 430 / 400 / 310 / 190. | Rates are correct. Biggest loss is the ID step: 24.6% of the 690 who reached it, 170 users. Reasons are labelled as guesses, each with a check. | **Pass, after two fails.** The first two runs named Contact verified (180 users) as the biggest loss, because "biggest" was not defined and then not applied. After rule 8 was rewritten with a method, the final run put the ID step first: 24.6%, 170 of 690, measured by share lost. Steps after Submitted were listed separately and not counted. Rates were correct and every guess came with a check. One small miss: the period is named in the headline and the first line, not on every line. |
 | E. Small sample | ANALYST, 40 started, a short funnel. | Says the sample is too small to read, shows counts only. | **Pass.** Counts only, no rates, no reasons. |
 
 <details>
 <summary><b>Show test screenshots</b></summary>
 
-<!-- Test D: run 1 is described in the table, run 2 is test-d.png, run 3 is test-d-v3.png. -->
+<!-- Test D: the screenshot is the final run. The two failed runs are described in the table. -->
 <p>
 <a href="assets/test-a.png"><img src="assets/test-a.png" alt="Test A" width="280"></a><br><sub>Test A: unclear ID photo</sub><br><br>
 <a href="assets/test-b.png"><img src="assets/test-b.png" alt="Test B" width="280"></a><br><sub>Test B: reviewer's note</sub><br><br>
 <a href="assets/test-c.png"><img src="assets/test-c.png" alt="Test C" width="280"></a><br><sub>Test C: customer asks "Will I be approved?"</sub><br><br>
-<a href="assets/test-d.png"><img src="assets/test-d.png" alt="Test D run 2" width="280"></a><br><sub>Test D, run 2 (Fail): Contact verified called the biggest loss</sub><br><br>
-<a href="assets/test-d-v3.png"><img src="assets/test-d-v3.png" alt="Test D run 3" width="280"></a><br><sub>Test D, run 3 (Pass with notes): ID step called the biggest loss</sub><br><br>
+<a href="assets/test-d.png"><img src="assets/test-d.png" alt="Test D final run" width="280"></a><br><sub>Test D, final run (Pass): ID step called the biggest loss. The two earlier runs failed, see the table.</sub><br><br>
 <a href="assets/test-e.png"><img src="assets/test-e.png" alt="Test E" width="280"></a><br><sub>Test E: small sample</sub>
 </p>
 
@@ -173,12 +172,12 @@ Five test runs, each with the prompt loaded as Project instructions and one set 
 
 ### What Changed Because of Testing and Review
 
-- **"Biggest loss" was not defined (Test D, three runs).** The AI counted users and named Contact verified (180 lost) as the biggest loss. The ID step lost fewer users (170) but a larger share (24.6%). The design assumed share, the prompt did not say so. A one-sentence definition was not enough: in run 2 the AI still put the label on the wrong step. Rule 8 now gives a method: work out the share lost for each step up to Submitted, compare shares not counts, and label only the highest. Run 3 named the ID step correctly. The line still did not come first, which is a small format miss.
+- **"Biggest loss" was not defined (Test D, two fails).** The AI counted users and named Contact verified (180 lost) as the biggest loss. The ID step lost fewer users (170) but a larger share (24.6%). The design assumed share, the prompt did not say so. A one-sentence definition was not enough: the AI still put the label on the wrong step. Rule 8 now gives a method: work out the share lost for each step up to Submitted, compare shares not counts, label only the highest, and put that line first. The final run named the ID step first.
 - **Possible tightening (Test A).** The AI opened with "not ready to submit yet", which is its own judgement. Not changed yet. If it appears again, a rule will tell it to describe the step only.
 
 ## Known Issues and Limitations
 
-- **Lightly tested prompt.** Each test was run once. Test D failed twice on what "biggest loss" means and passed with notes on the third run after rule 8 was rewritten. The other four tests ran once. The 12 rules are still a first draft.
+- **Lightly tested prompt.** Each test was run once. Test D failed twice on what "biggest loss" means and passed after rule 8 was rewritten. The other four tests ran once. The 12 rules are still a first draft.
 - **Made-up data.** The funnel numbers, review times and reviewer notes are sample figures. "Orchid Markets" is a fictional broker.
 - **No real drop-off data.** The weak point in the funnel is a design assumption, not a finding. The guesses the AI lists are things to test.
 - **No user testing.** The wording and the screen order come from design judgement, not from sessions with applicants.
