@@ -22,13 +22,15 @@ Here are the two clickable prototype flows:
 
 **1. Customer flow: from the progress screen to a returned case**
 
-<!-- VIDEO 1: on GitHub, drag demo/ai-account-opening-funnel-prototype.mp4 into the editor on the line below, then delete the fallback link line. -->
-[Fallback: open the customer flow video](demo/ai-account-opening-funnel-prototype.mp4)
+
+https://github.com/user-attachments/assets/c4e49c46-2df5-4904-8572-2bbf1f6c2cfb
+
 
 **2. Team flow: the funnel view with the AI summary**
 
-<!-- VIDEO 2: on GitHub, drag demo/ai-account-opening-funnel-team-view.mp4 into the editor on the line below, then delete the fallback link line. -->
-[Fallback: open the team flow video](demo/ai-account-opening-funnel-team-view.mp4)
+
+https://github.com/user-attachments/assets/9011b546-fe81-43dc-90c0-65afea76b641
+
 
 ## Key Features
 
